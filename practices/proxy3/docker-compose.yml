@@ -1,0 +1,34 @@
+#funciona correctamente con paginas estaticas
+#No estaba desplegando el local host la pagina por defecto.
+
+version: '3'
+services:
+  nginx:
+    container_name: proxy 
+    environment:
+      - AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
+    hostname: server
+    build: .
+    #image: nginx:1.19
+   # networks:
+   # - site1
+    # - site2
+    ports:
+    - '80:80'
+    - '443:443'
+    #- '22:22'
+    #- '8080:8080'
+
+    #volumes:
+       #- ./nginx:/etc/nginx
+       #- ./ssl:/etc/ssl/private
+       #- ./data:/data 
+       #- ./htmldefault:/usr/share/nginx/html;
+
+#networks:
+#   site1:
+#     external:
+#       name: webservice1_default
+#   site2:
+#     external:
+#       name: webservice2_default

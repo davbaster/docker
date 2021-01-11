@@ -7,14 +7,15 @@ FROM node:10.8-alpine
 
 WORKDIR /usr/app
 
-#copying code
+#copying package.json to install dependencies
 COPY ./package.json ./
-
-#install dependencies
-COPY ./ ./
 RUN npm install
+
+#copy source code and rest of the files
+COPY ./ ./
+
 #testing add express explicitly to run nodejs apps
-RUN npm install express
+#RUN npm install express
 
 #default command that runs when the container is first created
 CMD ["npm", "start"]

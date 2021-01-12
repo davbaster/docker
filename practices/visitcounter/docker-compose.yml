@@ -2,7 +2,10 @@ version: '3'
 services:
   redis-server:
     image: 'redis'
+    restart: always
   node-app:
     build: .
+    # restart no is just for example purposes, since no needs to be among colons
+    restart: "no"
     ports:
       - "4001:8081"
